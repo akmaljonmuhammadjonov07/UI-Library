@@ -1,9 +1,10 @@
-import Routers from '../routes';
+import Drawer from '../components/drawer/drawer';
+// import Home from '../pages/Home';
 
 function App() {
 	return (
 		<div>
-			<Routers />
+			<Drawer />
 		</div>
 	);
 }
