@@ -1,5 +1,5 @@
-function Table() {
+function Tables() {
 	return <div>Table</div>;
 }
 
-export default Table;
+export default Tables;
