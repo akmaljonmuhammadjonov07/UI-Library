@@ -3,8 +3,8 @@ import { useState } from 'react';
 const Sidebar = () => {
 	const [open, setOpen] = useState(true);
 	const Menus = [
-		{ title: 'Overview', src: 'Overview' },
-		{ title: 'Transactions', src: 'Transactions' },
+		{ title: 'Introduction', src: 'Overview' },
+		{ title: 'Instalition', src: 'Transactions' },
 		{ title: 'Loyalty Cards', src: 'Card', gap: true },
 		{ title: 'Subscriptions ', src: 'Calendar' },
 		{ title: 'Debts', src: 'Debt' },
