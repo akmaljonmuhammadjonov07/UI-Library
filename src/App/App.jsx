@@ -3,7 +3,7 @@ import Drawer from '../components/drawer/drawer';
 
 function App() {
 	return (
-		<div>
+		<div className='w-full h-screen flex justify-start'>
 			<Drawer />
 		</div>
 	);
