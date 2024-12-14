@@ -3,14 +3,14 @@ import { useState } from 'react';
 const Sidebar = () => {
 	const [open, setOpen] = useState(true);
 	const Menus = [
-		{ title: 'Introduction', src: 'Overview' },
-		{ title: 'Instalition', src: 'Transactions' },
-		{ title: 'Loyalty Cards', src: 'Card', gap: true },
-		{ title: 'Subscriptions ', src: 'Calendar' },
-		{ title: 'Debts', src: 'Debt' },
-		{ title: 'Legal information', src: 'Legal' },
-		{ title: 'Notifications ', src: 'Notifications', gap: true },
-		{ title: 'Setting', src: 'Settings' },
+		{ title: 'Introduction', src: 'Overview', link: '/' },
+		{ title: 'Instalition', src: 'Transactions', link: '/' },
+		{ title: 'Loyalty Cards', src: 'Card', link: '/', gap: true },
+		{ title: 'Subscriptions ', src: 'Calendar', link: '/' },
+		{ title: 'Debts', src: 'Debt', link: '/' },
+		{ title: 'Legal information', src: 'Legal', link: '/' },
+		{ title: 'Notifications ', src: 'Notifications', link: '/', gap: true },
+		{ title: 'Setting', src: 'Settings', link: '/' },
 	];
 	return (
 		<div className='fixed inset-0'>
