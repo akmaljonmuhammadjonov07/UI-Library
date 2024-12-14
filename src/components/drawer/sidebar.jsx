@@ -1,22 +1,15 @@
+import { Component, SquareArrowDown, SquareArrowUp } from 'lucide-react';
 import { useState } from 'react';
 
 const Sidebar = () => {
 	const [open, setOpen] = useState(true);
-	const Menus = [
-		{ title: 'Introduction', src: 'Overview', link: '/' },
-		{ title: 'Instalition', src: 'Transactions', link: '/' },
-		{ title: 'Components', src: 'Card', link: '/', gap: true },
-		{ title: 'Subscriptions ', src: 'Calendar', link: '/' },
-		{ title: 'Debts', src: 'Debt', link: '/' },
-		{ title: 'Legal information', src: 'Legal', link: '/' },
-		{ title: 'Notifications ', src: 'Notifications', link: '/', gap: true },
-		{ title: 'Setting', src: 'Settings', link: '/' },
-	];
+	const [accordionOpen, setAccordionOpen] = useState(false); // State for the accordion
+
 	return (
 		<div className='fixed flex inset-0'>
 			<div
 				className={`${
-					open ? ' w-72 max-md:w-20' : 'w-24'
+					open ? 'w-72 max-md:w-20' : 'w-24'
 				} bg-gray-700 h-screen p-5 pt-8 relative duration-300`}
 			>
 				<img
@@ -42,24 +35,120 @@ const Sidebar = () => {
 					</h1>
 				</div>
 				<ul className='pt-6'>
-					{Menus.map((Menu, index) => (
-						<li
-							key={index}
-							className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? 'mt-9' : 'mt-2'} ${
-								index === 0 && 'bg-light-white'
-							} `}
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Overview.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
 						>
-							<img src={`/${Menu.src}.svg`} />
+							Introduction
+						</span>
+					</li>
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Transactions.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Installation
+						</span>
+					</li>
+					<li
+						className='flex flex-col rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-start gap-x-4 mt-2'
+						onClick={() => setAccordionOpen(!accordionOpen)}
+					>
+						<div className='flex items-center gap-x-4 w-full'>
+							<Component />
 							<span
 								className={`${
 									!open && 'hidden'
-								} origin-left max-md:hidden duration-200`}
+								} origin-left max-md:hidden duration-200 flex-1`}
 							>
-								{Menu.title}
+								Components
 							</span>
-						</li>
-					))}
+							<span className={`${open ? '' : 'hidden'} text-xs`}>
+								{accordionOpen ? <SquareArrowDown /> : <SquareArrowUp />}
+							</span>
+						</div>
+						{accordionOpen && open && (
+							<ul className='pl-8 mt-2 space-y-2'>
+								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
+									Accordion
+								</li>
+								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
+									Tabs
+								</li>
+								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
+									Buttons
+								</li>
+							</ul>
+						)}
+					</li>
+					<hr className='my-4' />
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4'>
+						<img src='/Card.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Card
+						</span>
+					</li>
+
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Calendar.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Subscriptions
+						</span>
+					</li>
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Debt.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Debts
+						</span>
+					</li>
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Legal.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Legal Information
+						</span>
+					</li>
+					<hr className='my-4' />
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4'>
+						<img src='/Notifications.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Notifications
+						</span>
+					</li>
+					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+						<img src='/Settings.svg' />
+						<span
+							className={`${
+								!open && 'hidden'
+							} origin-left max-md:hidden duration-200`}
+						>
+							Settings
+						</span>
+					</li>
 				</ul>
 			</div>
 			<div className='h-14 w-full bg-gray-700 border-l-2 z-5'>
