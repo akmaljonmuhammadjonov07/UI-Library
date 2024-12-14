@@ -1,27 +1,18 @@
-// import {
-// 	BarChart3,
-// 	Boxes,
-// 	LayoutDashboard,
-// 	LifeBuoy,
-// 	Package,
-// 	Receipt,
-// 	Settings2,
-// 	Users,
-// } from 'lucide-react';
+// Drawer Page
 import Sidebar from '../../components/drawer/sidebar';
-
 import { Route, Routes } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Install from '../../pages/getstarted/install';
 
 function Drawer() {
 	return (
-		<div className='w-full flex overflow-hidden h-screen'>
-			<div>
-				<Sidebar />
-			</div>
-			<div className='p-8 bg-black w-full min-h-screen flex justify-center'>
-				<div>
+		<div className='flex h-screen w-full overflow-hidden'>
+			{/* Sidebar */}
+			<Sidebar />
+
+			{/* Main Content */}
+			<div className='flex-1 md:ml-72 max-md:ml-12 max-md:mr-96 bg-black p-8 min-h-screen flex justify-center transition-all duration-300'>
+				<div className='w-full'>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/instalition' element={<Install />} />
