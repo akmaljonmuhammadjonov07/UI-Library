@@ -1,5 +1,5 @@
 function Button() {
-	return <div>Accordion</div>;
+	return <div>Button</div>;
 }
 
 export default Button;

@@ -1,5 +1,5 @@
 function Navbar() {
-	return <div>Accordion</div>;
+	return <div>Navbar</div>;
 }
 
 export default Navbar;

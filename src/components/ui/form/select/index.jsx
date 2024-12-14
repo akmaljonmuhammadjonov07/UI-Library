@@ -1,5 +1,5 @@
 function Select() {
-	return <div>Navbar</div>;
+	return <div>Select</div>;
 }
 
 export default Select;

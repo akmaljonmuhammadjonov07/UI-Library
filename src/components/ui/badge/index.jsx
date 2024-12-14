@@ -1,5 +1,5 @@
 function Badge() {
-	return <div>Accordion</div>;
+	return <div>Badge</div>;
 }
 
 export default Badge;
