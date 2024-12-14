@@ -1,8 +1,6 @@
-import Drawer from '../../components/drawer/drawer';
-
 function Home() {
 	return (
-		<div className=''>
+		<div className='flex'>
 			<div className='ml-72 p-8 min-h-screen'>
 				<h1 className='text-4xl font-bold text-white'>
 					Welcome to the Documentation

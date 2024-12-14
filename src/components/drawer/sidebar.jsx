@@ -1,102 +1,68 @@
-import { MoreVertical, ChevronLast, ChevronFirst } from 'lucide-react';
-import { useContext, createContext, useState } from 'react';
+import { useState } from 'react';
 
-const SidebarContext = createContext();
-
-export default function Sidebar({ children }) {
-	const [expanded, setExpanded] = useState(true);
-
+const Sidebar = () => {
+	const [open, setOpen] = useState(true);
+	const Menus = [
+		{ title: 'Introduction', src: 'Overview' },
+		{ title: 'Instalition', src: 'Transactions' },
+		{ title: 'Loyalty Cards', src: 'Card', gap: true },
+		{ title: 'Subscriptions ', src: 'Calendar' },
+		{ title: 'Debts', src: 'Debt' },
+		{ title: 'Legal information', src: 'Legal' },
+		{ title: 'Notifications ', src: 'Notifications', gap: true },
+		{ title: 'Setting', src: 'Settings' },
+	];
 	return (
-		<aside className='h-screen'>
-			<nav className='h-full flex flex-col bg-white border-r shadow-sm'>
-				<div className='p-4 pb-2 flex justify-between items-center'>
-					<img
-						src='https://img.logoipsum.com/243.svg'
-						className={`overflow-hidden transition-all ${
-							expanded ? 'w-32' : 'w-0'
-						}`}
-						alt=''
-					/>
-					<button
-						onClick={() => setExpanded(curr => !curr)}
-						className='p-1.5 rounded-lg bg-gray-700 hover:bg-gray-700'
-					>
-						{expanded ? <ChevronFirst /> : <ChevronLast />}
-					</button>
-				</div>
-
-				<SidebarContext.Provider value={{ expanded }}>
-					<ul className='flex-1 px-3'>{children}</ul>
-				</SidebarContext.Provider>
-
-				<div className='border-t flex p-3'>
-					<img
-						src='https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true'
-						alt=''
-						className='w-10 h-10 rounded-md'
-					/>
-					<div
-						className={`
-              flex justify-between items-center
-              overflow-hidden transition-all ${expanded ? 'w-52 ml-3' : 'w-0'}
-          `}
-					>
-						<div className='leading-4'>
-							<h4 className='font-semibold text-gray-700'>John Doe</h4>
-							<span className='text-xs text-gray-700'>johndoe@gmail.com</span>
-						</div>
-						<MoreVertical size={20} />
-					</div>
-				</div>
-			</nav>
-		</aside>
-	);
-}
-
-export function SidebarItem({ icon, text, active, alert }) {
-	const { expanded } = useContext(SidebarContext);
-
-	return (
-		<li
-			className={`
-        relative flex items-center py-2 px-3 my-1
-        font-medium rounded-md cursor-pointer
-        transition-colors group
-        ${
-					active
-						? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800'
-						: 'hover:bg-indigo-50 text-gray-600'
-				}
-    `}
-		>
-			{icon}
-			<span
-				className={`overflow-hidden transition-all ${
-					expanded ? 'w-52 ml-3' : 'w-0'
-				}`}
+		<div className='fixed inset-0'>
+			<div
+				className={`${
+					open ? ' w-72 max-md:w-20' : 'w-20'
+				} bg-green-500 h-screen p-5  pt-8 relative duration-300`}
 			>
-				{text}
-			</span>
-			{alert && (
-				<div
-					className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
-						expanded ? '' : 'top-2'
-					}`}
+				<img
+					src='/control.png'
+					className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+           border-2 rounded-full  ${!open && 'rotate-180'}`}
+					onClick={() => setOpen(!open)}
 				/>
-			)}
-
-			{!expanded && (
-				<div
-					className={`
-          absolute left-full rounded-md px-2 py-1 ml-6
-          bg-indigo-100 text-indigo-800 text-sm
-          invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
-      `}
-				>
-					{text}
+				<div className='flex gap-x-4 items-center'>
+					<img
+						src='/smiley.svg'
+						className={`cursor-pointer duration-500 ${
+							open && 'rotate-[360deg]'
+						}`}
+					/>
+					<h1
+						className={`text-white max-md:hidden flex origin-left font-medium text-xl duration-200 ${
+							!open && 'scale-0'
+						}`}
+					>
+						AdeCodes
+					</h1>
 				</div>
-			)}
-		</li>
+				<ul className='pt-6'>
+					{Menus.map((Menu, index) => (
+						<li
+							key={index}
+							className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              ${Menu.gap ? 'mt-9' : 'mt-2'} ${
+								index === 0 && 'bg-light-white'
+							} `}
+						>
+							<img src={`/${Menu.src}.svg`} />
+							<span
+								className={`${
+									!open && 'hidden'
+								} origin-left max-md:hidden duration-200`}
+							>
+								{Menu.title}
+							</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
 	);
-}
+};
+
+export default Sidebar;
