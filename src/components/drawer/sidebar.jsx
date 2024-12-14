@@ -63,7 +63,7 @@ const Sidebar = () => {
 				</ul>
 			</div>
 			<div className='h-14 w-full bg-gray-700 border-l-2 z-5'>
-				<div className='flex items-center'></div>
+				<div className='flex items-center'>Home</div>
 			</div>
 		</div>
 	);
