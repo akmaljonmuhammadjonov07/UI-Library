@@ -1,5 +1,5 @@
 function Dropdown() {
-	return <div>Accordion</div>;
+	return <div>Dropdown</div>;
 }
 
 export default Dropdown;

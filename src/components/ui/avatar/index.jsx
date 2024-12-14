@@ -1,5 +1,5 @@
 function Avatar() {
-	return <div>Accordion</div>;
+	return <div>Avatar</div>;
 }
 
 export default Avatar;
