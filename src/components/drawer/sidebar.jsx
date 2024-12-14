@@ -5,7 +5,7 @@ const Sidebar = () => {
 	const Menus = [
 		{ title: 'Introduction', src: 'Overview', link: '/' },
 		{ title: 'Instalition', src: 'Transactions', link: '/' },
-		{ title: 'Loyalty Cards', src: 'Card', link: '/', gap: true },
+		{ title: 'Components', src: 'Card', link: '/', gap: true },
 		{ title: 'Subscriptions ', src: 'Calendar', link: '/' },
 		{ title: 'Debts', src: 'Debt', link: '/' },
 		{ title: 'Legal information', src: 'Legal', link: '/' },
@@ -13,11 +13,11 @@ const Sidebar = () => {
 		{ title: 'Setting', src: 'Settings', link: '/' },
 	];
 	return (
-		<div className='fixed inset-0'>
+		<div className='fixed flex inset-0'>
 			<div
 				className={`${
-					open ? ' w-72 max-md:w-20' : 'w-20'
-				} bg-green-500 h-screen p-5  pt-8 relative duration-300`}
+					open ? ' w-72 max-md:w-20' : 'w-24'
+				} bg-gray-700 h-screen p-5 pt-8 relative duration-300`}
 			>
 				<img
 					src='/control.png'
@@ -27,8 +27,9 @@ const Sidebar = () => {
 				/>
 				<div className='flex gap-x-4 items-center'>
 					<img
-						src='/smiley.svg'
-						className={`cursor-pointer duration-500 ${
+						onClick={() => setOpen(!open)}
+						src='/capture_241214_215434-removebg-preview.png'
+						className={`cursor-pointer duration-500 bg-white rounded-full w-12 h-12 ${
 							open && 'rotate-[360deg]'
 						}`}
 					/>
@@ -37,7 +38,7 @@ const Sidebar = () => {
 							!open && 'scale-0'
 						}`}
 					>
-						AdeCodes
+						{`MyCode`}
 					</h1>
 				</div>
 				<ul className='pt-6'>
@@ -60,6 +61,9 @@ const Sidebar = () => {
 						</li>
 					))}
 				</ul>
+			</div>
+			<div className='h-14 w-full bg-gray-700 border-l-2 z-5'>
+				<div className='flex items-center'></div>
 			</div>
 		</div>
 	);
