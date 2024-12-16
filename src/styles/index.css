@@ -49,11 +49,10 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-	background-color: white;
-	color: #121212;
+	@apply bg-white text-black dark:bg-gray-900 dark:text-white;
 }
 
-.app {
+/* .app {
 	width: 90%;
 	margin: 0 auto;
 	padding: 50px 0 50px 0;
@@ -67,4 +66,4 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
+} */
