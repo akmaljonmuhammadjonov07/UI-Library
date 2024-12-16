@@ -49,7 +49,7 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-	@apply bg-white text-black dark:bg-gray-900 dark:text-white;
+	@apply bg-white text-black dark:bg-gray-800 dark:text-white;
 }
 
 /* .app {
