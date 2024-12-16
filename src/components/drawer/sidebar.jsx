@@ -54,7 +54,7 @@ const Sidebar = () => {
 						className={({ isActive }) =>
 							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
 								isActive
-									? 'bg-gray-400 text-black'
+									? 'bg-gray-500 text-black'
 									: 'text-gray-300 hover:bg-light-white'
 							}`
 						}
