@@ -1,10 +1,9 @@
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Search, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 function Navbar() {
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
-	// Sahifa yuklanishida foydalanuvchi tanlovini o'qish
 	useEffect(() => {
 		const savedMode = localStorage.getItem('darkMode') === 'true';
 		setIsDarkMode(savedMode);
@@ -15,11 +14,10 @@ function Navbar() {
 		}
 	}, []);
 
-	// Dark mode tugmachasi bosilganda
 	const toggleDarkMode = () => {
 		setIsDarkMode(prevMode => {
 			const newMode = !prevMode;
-			localStorage.setItem('darkMode', newMode); // Tanlovni saqlash
+			localStorage.setItem('darkMode', newMode);
 			if (newMode) {
 				document.documentElement.classList.add('dark');
 			} else {
@@ -41,7 +39,17 @@ function Navbar() {
 					MyCode
 				</h1>
 			</div>
-			<div>
+			<div className='flex gap-3 items-center'>
+				<div className='relative w-full'>
+					<input
+						type='text'
+						placeholder='Search items...'
+						className='block w-full rounded-md bg-blue-200 dark:bg-gray-700 px-4 py-2 text-gray-600 dark:text-white outline-none placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600'
+					/>
+					<div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
+						<Search size={20} color={isDarkMode ? 'white' : 'gray'} />
+					</div>
+				</div>
 				<button
 					onClick={toggleDarkMode}
 					className='flex items-center p-2 rounded-md bg-blue-400 hover:bg-blue-600 text-white dark:bg-gray-600 dark:hover:bg-gray-500'
