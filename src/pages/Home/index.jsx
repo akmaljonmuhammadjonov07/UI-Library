@@ -1,7 +1,7 @@
 function Home() {
 	return (
-		<div className='flex'>
-			<div className='bg-black text-white min-h-screen px-8 py-16'>
+		<div className='w-full z-50'>
+			<div className=' w-full text-black min-h-screen px-8 py-16'>
 				<div className='max-w-3xl mx-auto'>
 					<h1 className='text-4xl font-bold mb-6'>Introduction</h1>
 					<p className='text-lg text-gray-400 mb-6'>
@@ -10,9 +10,9 @@ function Home() {
 					</p>
 					<div className='space-y-6'>
 						<p className='text-lg'>
-							This is <span className='font-bold text-white'>NOT</span> a
-							component library. It's a collection of re-usable components that
-							you can copy and paste into your apps.
+							This is <span className='font-bold'>NOT</span> a component
+							library. It{`'`}s a collection of re-usable components that you
+							can copy and paste into your apps.
 						</p>
 						<h2 className='text-2xl font-semibold'>
 							What do you mean by not a component library?
