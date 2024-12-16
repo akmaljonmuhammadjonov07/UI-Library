@@ -1,26 +1,20 @@
-import { Component, SquareArrowDown, SquareArrowUp } from 'lucide-react';
+import { Component, Search, Sun } from 'lucide-react';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
-	const [open, setOpen] = useState(true);
-	const [accordionOpen, setAccordionOpen] = useState(false); // State for the accordion
+	const [open] = useState(true);
+	const [accordionOpen, setAccordionOpen] = useState(true); // State for the accordion
 
 	return (
-		<div className='fixed flex inset-0'>
+		<div className='fixed flex inset-0 z-50'>
 			<div
 				className={`${
-					open ? 'w-72 max-md:w-20' : 'w-24'
+					open ? 'w-96 max-md:w-20' : 'w-24'
 				} bg-gray-700 h-screen p-5 pt-8 relative duration-300`}
 			>
-				<img
-					src='/control.png'
-					className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-           border-2 rounded-full  ${!open && 'rotate-180'}`}
-					onClick={() => setOpen(!open)}
-				/>
-				<div className='flex gap-x-4 items-center'>
+				<div className='flex gap-x-2.5 items-center'>
 					<img
-						onClick={() => setOpen(!open)}
 						src='/capture_241214_215434-removebg-preview.png'
 						className={`cursor-pointer duration-500 bg-white rounded-full w-12 h-12 ${
 							open && 'rotate-[360deg]'
@@ -35,7 +29,16 @@ const Sidebar = () => {
 					</h1>
 				</div>
 				<ul className='pt-6'>
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+					<NavLink
+						to='/introduction'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Overview.svg' />
 						<span
 							className={`${
@@ -44,50 +47,51 @@ const Sidebar = () => {
 						>
 							Introduction
 						</span>
-					</li>
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
-						<img src='/Transactions.svg' />
+					</NavLink>
+					<NavLink
+						to='/components'
+						onClick={() => setAccordionOpen(!accordionOpen)}
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
+						<Component />
 						<span
 							className={`${
 								!open && 'hidden'
 							} origin-left max-md:hidden duration-200`}
 						>
-							Installation
+							Components
 						</span>
-					</li>
-					<li
-						className='flex flex-col rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-start gap-x-4 mt-2'
-						onClick={() => setAccordionOpen(!accordionOpen)}
-					>
-						<div className='flex items-center gap-x-4 w-full'>
-							<Component />
-							<span
-								className={`${
-									!open && 'hidden'
-								} origin-left max-md:hidden duration-200 flex-1`}
-							>
-								Components
-							</span>
-							<span className={`${open ? '' : 'hidden'} text-xs`}>
-								{accordionOpen ? <SquareArrowDown /> : <SquareArrowUp />}
-							</span>
-						</div>
-						{accordionOpen && open && (
-							<ul className='pl-8 mt-2 space-y-2'>
-								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
-									Accordion
-								</li>
-								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
-									Tabs
-								</li>
-								<li className='text-gray-300 hover:text-white text-sm cursor-pointer'>
-									Buttons
-								</li>
-							</ul>
-						)}
-					</li>
+					</NavLink>
+					{accordionOpen && open && (
+						<ul className='pl-8 mt-2 space-y-2'>
+							<li className='text-gray-300 p-2 bg-slate-500 rounded-md hover:text-black text-sm cursor-pointer'>
+								Accordion
+							</li>
+							<li className='text-gray-300 p-2 bg-slate-500 rounded-md hover:text-black text-sm cursor-pointer'>
+								Buttons
+							</li>
+							<li className='text-gray-300 p-2 bg-slate-500 rounded-md hover:text-black text-sm cursor-pointer'>
+								Tabs
+							</li>
+						</ul>
+					)}
 					<hr className='my-4' />
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4'>
+					<NavLink
+						to='/card'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Card.svg' />
 						<span
 							className={`${
@@ -96,19 +100,36 @@ const Sidebar = () => {
 						>
 							Card
 						</span>
-					</li>
-
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+					</NavLink>
+					<NavLink
+						to='/subcribitions'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Calendar.svg' />
 						<span
 							className={`${
 								!open && 'hidden'
 							} origin-left max-md:hidden duration-200`}
 						>
-							Subscriptions
+							Subcripitions
 						</span>
-					</li>
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+					</NavLink>
+					<NavLink
+						to='/debts'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Debt.svg' />
 						<span
 							className={`${
@@ -117,8 +138,17 @@ const Sidebar = () => {
 						>
 							Debts
 						</span>
-					</li>
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+					</NavLink>
+					<NavLink
+						to='/legal'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Legal.svg' />
 						<span
 							className={`${
@@ -127,9 +157,18 @@ const Sidebar = () => {
 						>
 							Legal Information
 						</span>
-					</li>
+					</NavLink>
 					<hr className='my-4' />
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4'>
+					<NavLink
+						to='/notifications'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Notifications.svg' />
 						<span
 							className={`${
@@ -138,8 +177,17 @@ const Sidebar = () => {
 						>
 							Notifications
 						</span>
-					</li>
-					<li className='flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2'>
+					</NavLink>
+					<NavLink
+						to='/settings'
+						className={({ isActive }) =>
+							`flex rounded-md p-2 cursor-pointer text-sm items-center gap-x-4 mt-2 ${
+								isActive
+									? 'bg-gray-400 text-black'
+									: 'text-gray-300 hover:bg-light-white'
+							}`
+						}
+					>
 						<img src='/Settings.svg' />
 						<span
 							className={`${
@@ -148,11 +196,43 @@ const Sidebar = () => {
 						>
 							Settings
 						</span>
-					</li>
+					</NavLink>
 				</ul>
 			</div>
-			<div className='h-14 w-full bg-gray-700 border-l-2 z-5'>
-				<div className='flex items-center'>Home</div>
+			<div className='h-16 w-full p-3 pl-5 bg-gray-700 flex justify-between items-center border-l-2 z-5'>
+				<div className='flex gap-x-2.5 items-center'>
+					<img
+						src='/capture_241214_215434-removebg-preview.png'
+						className={`cursor-pointer duration-500 bg-white rounded-full w-12 h-12 ${
+							open && 'rotate-[360deg]'
+						}`}
+					/>
+					<h1
+						className={`text-white max-md:hidden flex origin-left font-medium text-xl duration-200 ${
+							!open && 'scale-0'
+						}`}
+					>
+						{`MyCode`}
+					</h1>
+				</div>
+				<div>
+					{' '}
+					<div className='flex gap-3 items-center w-full'>
+						<div className='relative w-full'>
+							<input
+								type='text'
+								placeholder='Search items...'
+								className='block w-full rounded-md bg-gray-900 px-4 py-2 pr-10 text-base text-white outline-none placeholder-gray-400 focus:ring-2 focus:ring-indigo-600'
+							/>
+							<div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
+								<Search size={20} color='gray' />
+							</div>
+						</div>
+						<button className='flex justify-center cursor-pointer hover:bg-slate-600 items-center p-2 rounded-md hover:rotate-180'>
+							<Sun color='white' />
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

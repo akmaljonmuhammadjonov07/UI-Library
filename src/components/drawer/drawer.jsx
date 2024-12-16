@@ -11,8 +11,8 @@ function Drawer() {
 			<Sidebar />
 
 			{/* Main Content */}
-			<div className='flex-1 md:ml-72 max-md:ml-12 relative max-md:mr-96 p-8 pt-14 min-h-screen flex justify-center transition-all duration-300'>
-				<div className='w-full'>
+			<div className='flex md:ml-72 max-md:ml-12 bg-slate-100 w-full relative max-md:mr-96 p-8 pt-14 min-h-screen justify-start transition-all duration-300'>
+				<div className='w-full flex justify-end'>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/instalition' element={<Install />} />
