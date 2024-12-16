@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 function Navbar() {
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
-	// Sahifa yuklanishida foydalanuvchi tanlovini o'qish
 	useEffect(() => {
 		const savedMode = localStorage.getItem('darkMode') === 'true';
 		setIsDarkMode(savedMode);
@@ -15,11 +14,10 @@ function Navbar() {
 		}
 	}, []);
 
-	// Dark mode tugmachasi bosilganda
 	const toggleDarkMode = () => {
 		setIsDarkMode(prevMode => {
 			const newMode = !prevMode;
-			localStorage.setItem('darkMode', newMode); // Tanlovni saqlash
+			localStorage.setItem('darkMode', newMode);
 			if (newMode) {
 				document.documentElement.classList.add('dark');
 			} else {
