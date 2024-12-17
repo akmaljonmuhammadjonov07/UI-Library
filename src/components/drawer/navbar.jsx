@@ -33,14 +33,14 @@ function Navbar() {
 				<img
 					src='/logo.png'
 					alt='Logo'
-					className='cursor-pointer bg-white rounded-full w-12 h-12'
+					className='cursor-pointer bg-white rounded-full w-12 h-12 max-sm:w-10 max-sm:h-10'
 				/>
-				<h1 className='text-white dark:text-gray-200 text-xl font-medium'>
+				<h1 className='text-white dark:text-gray-200 text-xl max-sm:text-base font-medium'>
 					MyCode
 				</h1>
 			</div>
 			<div className='flex gap-3 items-center'>
-				<div className='relative w-full'>
+				<div className='relative w-full max-sm:hidden'>
 					<input
 						type='text'
 						placeholder='Search items...'
@@ -49,6 +49,10 @@ function Navbar() {
 					<div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
 						<Search size={20} color={isDarkMode ? 'white' : 'gray'} />
 					</div>
+				</div>
+				<div className='items-center max-md:flex hidden p-2.5 rounded-md bg-blue-400 hover:bg-blue-600 text-white dark:bg-gray-600 dark:hover:bg-gray-500'>
+					{' '}
+					<Search size={20} color={isDarkMode ? 'white' : 'gray'} />
 				</div>
 				<button
 					onClick={toggleDarkMode}
