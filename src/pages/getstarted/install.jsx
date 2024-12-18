@@ -1,5 +1,5 @@
 function Install() {
-	return <div>Install</div>;
+	return <div className='w-full'>Install</div>;
 }
 
 export default Install;
