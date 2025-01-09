@@ -12,7 +12,7 @@ function CodeCard() {
 							<div className='w-3 h-3 rounded-full bg-green-500'></div>
 						</span>
 						<button
-							className='bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md'
+							className='bg-gray-800 code hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md'
 							data-clipboard-target='#code'
 						>
 							Copy
